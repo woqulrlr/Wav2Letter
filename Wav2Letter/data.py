@@ -125,10 +125,20 @@ class GoogleSpeechCommand():
         
         random.shuffle(meta_data)
 
+        errFileList = []
+
         for md in pg(meta_data):
             audio_path = md[0]
             labels = md[1]
-            _, audio = read(audio_path)
+
+            try:
+                _, audio = read(audio_path)
+            except ValueError:
+                print(audio_path)
+                errFileList.append(audio_path)
+                continue
+
+            # _, audio = read(audio_path)
             mfccs = mfcc_spec(
                 audio, self.sr, window_stride=(160, 80),
                 fft_size=512, num_filt=20, num_coeffs=13
@@ -140,6 +150,9 @@ class GoogleSpeechCommand():
 
             target = self.intencode.convert_to_ints(labels)
             targets.append(target)
+
+            print(errFileList)
+
         return inputs, targets
 
     @staticmethod
