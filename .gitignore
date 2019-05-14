@@ -106,3 +106,8 @@ venv.bak/
 .vscode
 
 speech_data/
+
+# myadd
+model/
+venv/
+*pth

@@ -1,4 +1,8 @@
-pytorch-nightly  # as of Nov 2018 - need pytorch 1.0 necessary for CTC_loss fn
-sonopy
-scipy
-tqdm
+numpy==1.16.3
+Pillow==6.0.0
+scipy==1.2.1
+six==1.12.0
+sonopy==0.1.2
+torch==1.1.0
+torchvision==0.2.2.post3
+tqdm==4.31.1
